@@ -257,7 +257,7 @@
     if (!lista.length){ $("widok").innerHTML = "<p>Nie ma jeszcze oddanych prac.</p>"; return; }
     var doOceny = lista.filter(function(p){ return !wynik(p).gotowe; }).length;
     var html = '<p class="podsum"><span>Oddane prace: <b>' + lista.length + '</b></span><span>Do dokończenia oceny: <b>' + doOceny + '</b></span></p>' +
-      '<table><tr>' + [["Uczeń","nazwisko"],["Klasa","klasa"],["Klub/koło","klub"],["Oddano","oddano"],["Zamknięte",""],["Otwarte",""],["Suma","suma"],["%","suma"],["Wyjścia","wyjscia"],["Status","status"]].map(function(k, i){
+      '<table><tr>' + [["Grupa / para","nazwisko"],["Klasa","klasa"],["Klub/koło","klub"],["Oddano","oddano"],["Zamknięte",""],["Otwarte",""],["Suma","suma"],["%","suma"],["Wyjścia","wyjscia"],["Status","status"]].map(function(k, i){
         var akt = k[1] && k[1] === sortuj.pole && i !== 7, kl = (i >= 4 && i <= 8 ? "liczba" : "") + (akt ? " sort-akt" : "");
         return '<th' + (kl ? ' class="' + kl.trim() + '"' : '') + (k[1] ? ' data-sort="' + k[1] + '" title="Sortuj"' : '') + '>' + k[0] + (akt ? (sortuj.kier > 0 ? " ▲" : " ▼") : "") + '</th>';
       }).join("") + '</tr>';
@@ -395,7 +395,7 @@
   }
 
   function csv(){
-    var w = [["Uczeń","Klasa","Klub/koło","Oddano","Zamknięte","Otwarte","Suma","Max","Procent","Ocenione w całości","Wyjścia ze strony","Czas poza stroną (s)"]];
+    var w = [["Grupa / para","Klasa","Klub/koło","Oddano","Zamknięte","Otwarte","Suma","Max","Procent","Ocenione w całości","Wyjścia ze strony","Czas poza stroną (s)"]];
     widoczne().forEach(function(p){
       var r = wynik(p), K = kl(p) || {max:10};
       w.push([p.imie, p.klasa, skrotKlubu(p), new Date(p.oddano).toLocaleString("pl-PL"), r.auto, r.otw, r.suma, K.max, Math.round(r.suma / K.max * 100), r.gotowe ? "tak" : "nie",

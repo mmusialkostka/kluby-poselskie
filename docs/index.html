@@ -23,6 +23,7 @@
   .naglowek .przedmiot{font-weight:700;font-size:16px;margin:2px 0 10px}
   .imie{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-top:4px}
   .imie label{font-weight:700}
+  .imie input::placeholder{color:#aaa}
   .imie input{flex:1;min-width:220px;font:inherit;border:0;border-bottom:1px dotted #333;padding:2px 4px;background:transparent}
   .ramki{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex:none}
   .ramka-pkt{border:1.5px solid #000;min-width:112px;padding:8px 10px;text-align:right;font-weight:700;font-size:18px}
@@ -155,7 +156,7 @@
     <div>
       <h1>KLUBY I KOŁA POSELSKIE</h1>
       <div class="przedmiot">WIEDZA O SPOŁECZEŃSTWIE | POZIOM ROZSZERZONY</div>
-      <div class="imie"><label for="imie">Imię i nazwisko:</label><input id="imie" name="imie" autocomplete="off"></div>
+      <div class="imie"><label for="imie">Imiona i nazwiska członków grupy / pary:</label><input id="imie" name="imie" autocomplete="off" placeholder="np. Anna Nowak, Jan Kowalski"></div>
       <div class="imie"><label for="klasa">Klasa:</label><input id="klasa" name="klasa" autocomplete="off" style="flex:none;min-width:0;width:90px"></div>
     </div>
     <div class="ramki">
@@ -414,7 +415,7 @@ var DANE = {"kluby": [{"id": "KO", "skrot": "KO", "nazwa": "Klub Parlamentarny K
     }
     if (!wartosc("imie").trim() || !wartosc("klasa").trim()){
       var pole = !wartosc("imie").trim() ? "imie" : "klasa";
-      okno("Uzupełnij dane", "<p>Przed oddaniem wpisz na górze strony " + (pole === "imie" ? "imię i nazwisko" : "klasę") + ".</p>",
+      okno("Uzupełnij dane", "<p>Przed oddaniem wpisz na górze strony " + (pole === "imie" ? "imiona i nazwiska członków grupy / pary" : "klasę") + ".</p>",
         [{tekst:"Wróć", glowny:true, akcja:function(){ document.getElementById(pole).focus(); }}]);
       return;
     }
